@@ -1,7 +1,4 @@
 import express, { Express, Request, Response } from 'express';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 const app: Express = express();
 const port = 8800;
@@ -12,8 +9,8 @@ app.get('/', (req: Request, res: Response) => {
   res.send('Express + TypeScript Seasdrver');
 });
 
-app.get('/hi', (req: Request, res: Response) => {
-  res.send('hi1asd');
+app.get('/lol/recommend', (req: Request, res: Response) => {
+  res.send('Lorem ipsum sit dolor amet...');
 });
 
 app.listen(port, () => {
