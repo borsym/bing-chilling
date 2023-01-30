@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app: Express = express();
-const port = 8800;
+const port = process.env.PORT || 8800;
 
 console.log('hello teszt');
 
