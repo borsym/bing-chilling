@@ -22,8 +22,11 @@ export const getGameInfos = async (req: Request, res: Response) => {
 
 export const recommendCharacter = async (req: Request, res: Response) => {
   try {
-    const keywords = await extracetKeywordsFromPrompt(req.body.prompt);
-    
+    const keywordsFromPrompt = await extracetKeywordsFromPrompt(
+      req.body.prompt
+    );
+    // console.log('hello', keywordsFromPrompt);
+
     const allCharacter = await axios.get(`${baseURL}/champion.json`);
     const charactersData = allCharacter.data.data;
     const resp = extractData(charactersData);
@@ -33,6 +36,8 @@ export const recommendCharacter = async (req: Request, res: Response) => {
     );
 
     const responses = await Promise.all(requests);
+    // spellek leirasa desc ossze mergeles
+    // az megy a masik keywordnak
     const championsData = extractChampionsData(responses);
 
     res.json(championsData);
