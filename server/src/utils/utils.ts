@@ -8,8 +8,8 @@ export const extractData = (charactersData: any) =>
 
 export const extractChampionsData = (responses: any) =>
   responses
-    .map((response) => response.data.data)
-    .map((value) => Object.values(value))
+    .map((response: any) => response.data.data)
+    .map((value: any) => Object.values(value))
     .flat()
     .map((champ: any) => ({
       name: champ.id,
