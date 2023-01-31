@@ -1,10 +1,12 @@
 <script>
     import './styles.css';
+    import Summary from "./utils/Summary.svelte";
+    import Champions from "./utils/Champions.svelte";
 
     let response = ""
 
     async function send() {
-        response = (await fetch("http://localhost:8800/lol/recommend")).text()
+        response = (await fetch("http://localhost:8800/lol/recommend")).json()
         console.log(response)
     }
 </script>
@@ -14,22 +16,9 @@
     <div class="button-holder">
         <button class="prompt-button" on:click={send}>Let's go</button>
     </div>
-    <div class="response">
-        <hr/>
-        {#await response}
-            <div class="response-content">
-                Looking for the best match...
-            </div>
-        {:then value}
-            <div class="response-content">
-                {value}
-            </div>
-        {:catch error}
-            <div class="response-content">
-                {error}
-            </div>
-        {/await}
-    </div>
+    {#if response}
+        <Champions response="{response}"/>
+    {/if}
 </div>
 
 <style>
@@ -72,20 +61,4 @@
         border-width: 1pt;
     }
 
-    .response {
-        margin-top: 3em;
-        width: 100%;
-        height: 50vh;
-    }
-
-    .response-content {
-        margin-top: 1em;
-        border-radius: 16pt;
-        width: 100%;
-        padding: 0.5em 0.8em;
-        height: fit-content;
-        background-color: #4e406d;
-        font-size: 16pt;
-        filter: drop-shadow(0.5em 0.5em 0.2em var(--shadow-color));
-    }
 </style>
