@@ -17,9 +17,9 @@
 	--column-margin-top: 4rem;
 	--prompt: #443574;
 	--background: #1f1c2a;
-	--background2: #2b2341;
+	--background2: rgb(43, 35, 65);
 	--shadow-color: #221a2e;
-	font-family: var(--font-body);
+	font-family: Spiegel, "Arial Narrow", Arial, sans-serif;
 	color: var(--color-text);
 }
 
@@ -48,12 +48,6 @@ textarea {
 	background-color: var(--prompt);
 }
 
-h1,
-h2,
-p {
-	font-weight: 400;
-}
-
 p {
 	line-height: 1.5;
 }
@@ -65,15 +59,6 @@ a {
 
 a:hover {
 	text-decoration: underline;
-}
-
-h1 {
-	font-size: 2rem;
-	text-align: center;
-}
-
-h2 {
-	font-size: 1rem;
 }
 
 pre {
