@@ -1,97 +1,128 @@
-This is a bot that automatically finds the most important keywords for a given text passage.
---
 Prompt: I want champion who is a cunning and elusive mage with a playstyle that emphasizes charm and mobility. With a versatile kit that includes a skillshot, a spray of fireballs, a targeted charm ability, and a dash, they excel at setting up kills and outmaneuvering their enemies. I want to quickly burst down opponents and make a big impact in team fights. I like to be a quick thinker.
+
 Keywords: Mage, Mobility, Skillshot, Charm, Mid, Dash, Magical, Outsmart, Witty, Teamfight
 --
 Prompt: I want a high mobility and burst damage champion, with the ability to quickly eliminate key targets in a fight. I want strong single target damage and mobility skills to help me get in and out of fights quickly. I enjoy playing aggressively and making quick, decisive actions in the game.
+
 Keywords: Assassin, Mobility, Quick, Single Target, High Damage, Aggressive, Decisive, Mid, Jungle
 --
 Prompt: I want to prioritize survival and crowd control over damage. I desire high health pools and abilities that allow me to disrupt enemy movements and protect my allies. I enjoy being in the thick of the fight and playing a supportive role for my team.
+
 Keywords: Tank, Survival, Control, CC, Health, Disruption, Protection, Support, Top, Jungle
 --
 Prompt: I want a long-range damage dealer that excels at taking down enemy champions from a distance. I desire strong sustained damage and the ability to kite or dodge enemy abilities. I enjoy playing a passive, yet effective role in fights, and I have good aim and game awareness.
+
 Keywords: Marksman, High Damage, Glass Cannon, Ranged, Sustain, Kite, Awareness, Patience, Carry, Jungle
 --
 Prompt: I love to prioritize utility and protection for my allies, rather than dealing damage. I would like to provide healing, crowd control, and other forms of assistance to my team. I enjoy playing a selfless role in the game, and have strong map awareness and teamwork skills.
+
 Keywords: Support, Teamwork, Utility, Protection, Healing, Control, CC, Assistance, Selfless, Jungle
 --
 Prompt: I would like to play a girl character, that utilizes range and requires high skill to play. I like to focus out enemies in the teamfights and make flashy plays. I do not enjoy farming.
+
 Keywords: Female, Ranged, Outsmart, Witty, Teamfight, Single Target, Flashy, Roaming
 --
 Prompt: I would like to farm most of the game and destroy many enemy towers. I really like objectives and prefer solo play most of the time.
+
 Keywords: Splitting, Soloing, Farming, Towers, Objectives, Top, Survival, Disruption
 --
 Prompt: I would like to help my team as much as I can. I also like to deal a little bit of damage. I prefer teamplay.
+
 Keywords: Support, Teamwork, High Damage, Teamfight, Utility
 --
 Prompt: I would like to play an easy champion that requires less skill and good for beginners. I like ranged champions.
+
 Keywords: Easy, Beginner, Ranged
 --
 Prompt: My playstyle revolves around having less mobility and huge health pools. I like to be tanky and annoying in teamfights. 
+
 Keywords: Health, Tank, Annoying, Teamfight, Heavy
 --
 Prompt: I would just like to have fun.
+
 Keywords: Easy, Beginner, Early Game, Mobility
 --
 Prompt: I would like to be strong in the early game and snowball myself to a win. I also like to ward a lot.
+
 Keywords: Early Game, Snowball, Warding
 --
 Prompt: I like the desert so I would like to play a champion from the desert. I also like champions who are loyal and strong-witted.
+
 Keywords: Desert, Loyal, Witty
 --
 Prompt: I like demon type champions who are good at deceiving enemies. I would also like to be stealthy and help my team from the shadows.
+
 Keywords: Demon, Deceiving, Stealth, Ganking, Jungle, Utility
 --
 Prompt: I like champions that heal a lot. I enjoy using sustained damage and long fights.
+
 Keywords: Healing, Sustain, Teamfight
 --
 Prompt: I like noble characters who are from a wealthy family. I would also enjoy it if they would be ranged with high damage output.
+
 Keywords: Noble, Wealthy, Ranged, Carry, High Damage
 --
 Prompt: I like to be in the center of attention. I would like to show everyone how good I am.
+
 Keywords: Mid, Assassin, Carry, Soloing, Outsmart, Snowball, Mage
 --
 Prompt: I would like to play in a team with as much collaboration as possible. I would also like to control objectives around the map and deal magic damage.
+
 Keywords: Teamfight, Teamwork, Control, Objectives, Mage
 --
 Prompt: I like to jump on the weak and kill them easily, then escape as fast as possible.
+
 Keywords: Jump, Dash, Assassin, Quick, Mobility, High Damage
 --
 Prompt: I like water type champions that have spells revolved around the water element. I also like non-human type characters.
+
 Keywords: Water, Aqua, Elemental, Non-Human
 --
 Prompt: I like slow and progressing characters that are strong in the late game. I would also prefer it to be some sort of outcast.
+
 Keywords: Snowball, Late Game, Outcast, Progressive
 --
 Prompt: I would like to play a character that has meelee and ranged possibilities as well. I also want a huge large cooldown ultimate. I like musical characters as well.
+
 Keywords: Hybrid, Ultimate, High Damage, Music
 --
 Prompt: I like to be toxic and annoying so I would prefer my champion to have a lot of crowd control. I also like champions related to war.
+
 Keywords: Annoying, Toxic, CC, War
 --
 Prompt: I would like to keep my enemies stunlocked so I can disable one enemy completely during a teamfight. I also like champions with a sword.
+
 Keywords: CC, Annoying, Sword, Teamfight, Utility
 --
 Prompt: I would like to play with big boobies.
+
 Keywords: Female, Boobs, Humanoid
 --
 Prompt: I would like to do a lot of area of effect, healing damage. I also like to steal from my enemy. I like characters who fight with love and have a traumatic past. Stealing spell would be really enjoyable.
+
 Keywords: AOE, Stealing, Love, Trauma, Healing
 --
 Prompt: I would like to revive my teammates or keep them from dying. I would like to help our carry to snowball the game. I also prefer rock type characters.
+
 Keywords: Revive, Utility, Support, Rock, Healing, Teamwork
 --
 Prompt: I like to be extremely fast around the map. I like characters that have a staff or magical weapon. I like chains on characters with a lot of ornaments.
+
 Keywords: Mobility, Utility, Roaming, Fast, Magical, Staff, Chains, Ornaments
 --
 Prompt: I like humanoid characters that are living with disabilities and are small. I would also like to be stealthy. I prefer easier champions.
+
 Keywords: Humanoid, Disability, Yordle, Stealth, Easy
 --
 Prompt: I would like to play a non-repetitive champion that I can play all day with. I would also like to play with a spiritual character.
+
 Keywords: Variety, Hybrid, Witty, Spiritual, High Skill
 --
 Prompt: I would like to have a lot of money during the game. I would like to get ahead of everyone else, then stomp them in the late game with high damage and sustain.
+
 Keywords: Money, Pirate, Snowball, Late Game, High Damage, Sustain
 --
 Prompt: Give me a high damage character that does not die easily.
+
 Keywords: High Damage, Sustain, Healing, Teamfight, High Skill, Mobility
+--
