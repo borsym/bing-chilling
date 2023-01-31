@@ -1,7 +1,9 @@
-import express, { Express, Request, Response } from 'express';
-import dotenv from 'dotenv';
-import cors from 'cors';
-import exampleRouter from './routes/example';
+import express, { Express, Request, Response } from "express";
+import dotenv from "dotenv";
+import cors from "cors";
+import exampleRouter from "./routes/example";
+import gameRouter from "./routes/gameRouter";
+import morgan from "morgan";
 
 dotenv.config();
 
@@ -12,15 +14,18 @@ const port = process.env.PORT || 8800;
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/v1/example', exampleRouter);
+app.use(morgan("tiny"));
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Express + TypeScript Seasdrver');
+app.use("/api/v1/example", exampleRouter);
+
+app.get("/", (req: Request, res: Response) => {
+  res.send("Express + TypeScript Seasdrver");
 });
 
-app.get('/hi', (req: Request, res: Response) => {
-  res.send('hi1asd');
+app.get("/hi", (req: Request, res: Response) => {
+  res.send("hi1asd");
 });
+app.use("/api/v1/games", gameRouter);
 
 app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
