@@ -43,9 +43,13 @@ export const recommendCharacter = async (req: Request, res: Response) => {
     }
 
     let promiseArray = await Promise.all(awaitArray);
-    let champions = promiseArray.map((value: any) => value.data.data);
+    let championsData = promiseArray
+      .map((value: any) => value.data.data)
+      .map((value) => Object.values(value))
+      .flat();
+    // let champions = Object.values(championsData);
 
-    res.json(champions);
+    res.json(championsData);
   } catch (error) {
     console.error(error);
   }
