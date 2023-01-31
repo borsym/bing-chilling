@@ -1,9 +1,18 @@
 import express, { Express, Request, Response } from 'express';
+import dotenv from 'dotenv';
+import cors from 'cors';
+import exampleRouter from './routes/example';
+
+dotenv.config();
 
 const app: Express = express();
-const port = 8800;
+const port = process.env.PORT || 8800;
 
-console.log('hello teszt');
+// middleware
+app.use(cors());
+app.use(express.json());
+
+app.use('/api/v1/example', exampleRouter);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Express + TypeScript Seasdrver');
