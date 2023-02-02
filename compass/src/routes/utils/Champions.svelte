@@ -26,7 +26,7 @@
         </div>
     {:catch error}
         <div class="response-content">
-            {error}
+            Hmm... The request didn't pass the vibe check.
         </div>
     {/await}
 </div>
@@ -48,11 +48,11 @@
         flex-direction: row;
         flex-wrap: wrap;
         margin-top: 1em;
-        border-radius: 16pt;
+        border-radius: 8px;
         width: 100%;
         padding: 0.5em 0.8em;
         height: fit-content;
-        background-color: #4e406d;
+        background-color: var(--prompt);
         font-size: 16pt;
         filter: drop-shadow(0.5em 0.5em 0.2em var(--shadow-color));
     }

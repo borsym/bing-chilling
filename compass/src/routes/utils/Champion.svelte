@@ -40,6 +40,13 @@
         padding: 1em;
     }
 
+    .profile:nth-of-type(2) {
+        display: grid;
+        grid-template-columns: 1fr 7fr 4fr;
+        padding: 1em;
+        background-color: var(--background2);
+    }
+
     .desc {
         display: flex;
         flex-direction: column;
@@ -73,7 +80,7 @@
     }
 
     .chart {
-        background: radial-gradient(var(--background2), #4e406d 60%);
+        background: radial-gradient(var(--background2), var(--prompt) 60%);
     }
 
     .title {
