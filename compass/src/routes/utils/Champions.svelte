@@ -1,5 +1,4 @@
 <script>
-    import Token from "./Token.svelte";
     import Champion from "./Champion.svelte";
 
     export let response = "";

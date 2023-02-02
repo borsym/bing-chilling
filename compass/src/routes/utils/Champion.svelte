@@ -1,9 +1,8 @@
 <script>
-    import Chart from 'chart.js/auto';
     import {onMount} from "svelte";
+    import {createChart} from "./chart.ts";
 
     export let champ = {};
-    console.log(champ)
 
     onMount(() => {
         drawChart(champ.name, champ.info)
@@ -11,45 +10,8 @@
 
     function drawChart(name, info) {
         const ctx = document.getElementById(name);
-        const data = {labels: Object.keys(info), datasets: [{data: Object.values(info)}]}
-        new Chart(ctx, {
-            type: 'radar',
-            data,
-            options: {
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
-                scales: {
-                    r: {
-                        angleLines: {
-                            color: '#0d1059',
-                            lineWidth: 2
-                        },
-                        ticks: {
-                            color: '#69c9e0',
-                            backdropColor: 'rgba(255, 255, 255, 0.0)',
-                            font: {
-                                size: 16
-                            }
-                        },
-                        pointLabels: {
-                            color: '#69c9e0',
-                            font: {
-                                size: 16
-                            }
-                        }
-                    }
-                },
-                elements: {
-                    line: {
-                        borderWidth: 3,
-                        borderColor: '#FF10F0'
-                    }
-                }
-            }
-        });
+        const data = {labels: Object.keys(info), datasets: [{data: Object.values(info)}]};
+        createChart(ctx, data);
     }
 </script>
 
@@ -57,7 +19,7 @@
     <div class="percent">Accuracy: 100%</div>
     <div class="desc">
         <div class="title">
-            <img src="src/images/{champ.image.full}" alt="Champ">
+            <img src="{champ.image}" alt="Champ">
             <div class="title-content">
                 <h1>{champ.name}</h1>
                 <h2>{champ.title}</h2>
