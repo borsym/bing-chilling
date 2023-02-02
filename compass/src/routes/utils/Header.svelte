@@ -1,24 +1,22 @@
-<script>
-    import {page} from '$app/stores';
-</script>
+<script></script>
 
 <header>
     <nav>
         <img class="logo" src="src/images/logo.svg" alt="An image of a red ball."/>
-<!--        <ul>-->
-<!--            <li aria-current={""}>-->
-<!--                <a href="/">Home</a>-->
-<!--            </li>-->
-<!--            <li aria-current={""}>-->
-<!--                <a href="/">Request Game</a>-->
-<!--            </li>-->
-<!--            <li aria-current={""}>-->
-<!--                <a href="/">Create Background Story</a>-->
-<!--            </li>-->
-<!--            <li aria-current={""}>-->
-<!--                <a href="/">About Us</a>-->
-<!--            </li>-->
-<!--        </ul>-->
+        <!--        <ul>-->
+        <!--            <li aria-current={""}>-->
+        <!--                <a href="/">Home</a>-->
+        <!--            </li>-->
+        <!--            <li aria-current={""}>-->
+        <!--                <a href="/">Request Game</a>-->
+        <!--            </li>-->
+        <!--            <li aria-current={""}>-->
+        <!--                <a href="/">Create Background Story</a>-->
+        <!--            </li>-->
+        <!--            <li aria-current={""}>-->
+        <!--                <a href="/">About Us</a>-->
+        <!--            </li>-->
+        <!--        </ul>-->
     </nav>
 </header>
 

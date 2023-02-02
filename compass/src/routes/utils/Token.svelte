@@ -2,8 +2,6 @@
     export let likelihood;
     export let token;
 
-    console.log(likelihood)
-    console.log(token)
 </script>
 
 <div class="token" style="background-color: rgba(43, 35, 65, {likelihood})">
