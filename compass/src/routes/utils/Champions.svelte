@@ -2,7 +2,7 @@
     import Champion from "./Champion.svelte";
 
     export let response = "";
-
+    console.log(response)
 </script>
 
 <div class="response">
@@ -12,8 +12,15 @@
             Looking for the best match...
         </div>
     {:then value}
+        <div class="flex flex-row gap-3 my-5">
+            {#each value.summary as keyword}
+                <div class="keyword rounded-lg text-black px-2 py-1 ">
+                    {keyword}
+                </div>
+            {/each}
+        </div>
         <div class="response-content">
-            {#each value as val}
+            {#each value.championsData as val}
                 <Champion champ="{val}"/>
             {/each}
         </div>
@@ -29,6 +36,11 @@
         margin-top: 3em;
         width: 100%;
         height: 50vh;
+    }
+
+    .keyword {
+        background-color: #42d1f5;
+        font-size: 16pt;
     }
 
     .response-content {

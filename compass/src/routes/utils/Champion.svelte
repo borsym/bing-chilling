@@ -19,13 +19,14 @@
     <div class="percent">Accuracy: 100%</div>
     <div class="desc">
         <div class="title">
-            <img src="{champ.image}" alt="Champ">
+            <img src="{champ.img}" alt="Champ">
             <div class="title-content">
                 <h1>{champ.name}</h1>
                 <h2>{champ.title}</h2>
+                <h3>{champ.tags.join(', ')}</h3>
             </div>
         </div>
-        <p>{champ.blurb}</p>
+        <p>{champ.lore}</p>
     </div>
     <div class="chart">
         <canvas id="{champ.name}" width="10em"></canvas>
@@ -36,6 +37,7 @@
     .profile {
         display: grid;
         grid-template-columns: 1fr 7fr 4fr;
+        padding: 1em;
     }
 
     .desc {

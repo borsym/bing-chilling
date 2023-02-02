@@ -45,6 +45,14 @@ body {
     filter: drop-shadow(0.5em 0.5em 0.2em var(--shadow-color));
 }
 
+.prompt-button:hover {
+    background-color: #41611b;
+}
+
+.prompt-button:active {
+    background-color: #a7d86f;
+}
+
 textarea {
     background-color: var(--prompt);
 }
