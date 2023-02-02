@@ -42,7 +42,7 @@
         resize: none;
         height: 20vh;
         width: 100%;
-        border-radius: 16px;
+        border-radius: 8px;
         padding: 0.5em 0.8em;
         margin-bottom: 1em;
         font-size: 16pt;
