@@ -28,7 +28,11 @@ export const extractChampionsData = (responses: any) => {
     });
 };
 
-export const provideOptions = (prompt: string) => {
+export const provideOptions = (prompt: string, model?: string) => {
+  if (!model) {
+    return {}
+  }
+
   return {
     method: 'POST',
     url: 'https://api.cohere.ai/generate',
@@ -39,7 +43,7 @@ export const provideOptions = (prompt: string) => {
       authorization: `Bearer ${process.env.BEARER_TOKEN}`,
     },
     data: {
-      model: process.env.MODEL,
+      model,
       truncate: 'END',
       prompt: prompt,
       max_tokens: 40,
