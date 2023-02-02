@@ -1,0 +1,86 @@
+<script>
+    import {onMount} from "svelte";
+    import {createChart} from "./chart.ts";
+
+    export let champ = {};
+
+    onMount(() => {
+        drawChart(champ.name, champ.info)
+    })
+
+    function drawChart(name, info) {
+        const ctx = document.getElementById(name);
+        const data = {labels: Object.keys(info), datasets: [{data: Object.values(info)}]};
+        createChart(ctx, data);
+    }
+</script>
+
+<div class="profile">
+    <div class="percent">Accuracy: 100%</div>
+    <div class="desc">
+        <div class="title">
+            <img src="{champ.image}" alt="Champ">
+            <div class="title-content">
+                <h1>{champ.name}</h1>
+                <h2>{champ.title}</h2>
+            </div>
+        </div>
+        <p>{champ.blurb}</p>
+    </div>
+    <div class="chart">
+        <canvas id="{champ.name}" width="10em"></canvas>
+    </div>
+</div>
+
+<style>
+    .profile {
+        display: grid;
+        grid-template-columns: 1fr 7fr 4fr;
+    }
+
+    .desc {
+        display: flex;
+        flex-direction: column;
+        margin-left: 1em;
+    }
+
+    img {
+        object-fit: cover;
+    }
+
+    .percent {
+        position: relative;
+        font-size: 26pt;
+        text-align: center;
+        vertical-align: central;
+        display: block;
+        top: 30%;
+    }
+
+    h1 {
+        color: gold;
+        font-weight: bold;
+    }
+
+    h2 {
+        color: goldenrod;
+    }
+
+    h1, h2 {
+        filter: drop-shadow(0.2em 0.2em 0.1em var(--shadow-color));
+    }
+
+    .chart {
+        background: radial-gradient(var(--background2), #4e406d 60%);
+    }
+
+    .title {
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+        margin-bottom: 0.5em;
+    }
+
+    .title-content {
+        padding-left: 1em;
+    }
+</style>

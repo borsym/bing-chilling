@@ -22,9 +22,6 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Seasdrver");
 });
 
-app.get("/hi", (req: Request, res: Response) => {
-  res.send("hi1asd");
-});
 app.use("/api/v1/games", gameRouter);
 
 app.listen(port, () => {
