@@ -1,9 +1,10 @@
 import axios from "axios";
 import {baseURL, imgUrl} from "../utils/constants";
-import {extractChampionsData, extractData, extractIdAndTags} from "../utils/utils";
-import {readJSON, readFile} from "./fileService";
+import {extractData} from "../utils/utils";
+import {readJSON} from "./fileService";
 
 const CACHE = new Map();
+
 export async function getChampionsFromAPI() {
     const allCharacter = await axios.get(`${baseURL}/champion.json`);
     const charactersData = allCharacter.data.data;

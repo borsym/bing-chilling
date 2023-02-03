@@ -37,12 +37,6 @@
         height: 50vh;
     }
 
-    .keyword {
-        background-color: #42d1f5;
-        font-size: 16pt;
-        filter: drop-shadow(0.5em 0.5em 0.2em var(--shadow-color));
-    }
-
     .response-content, .wait {
         display: flex;
         flex-direction: row;

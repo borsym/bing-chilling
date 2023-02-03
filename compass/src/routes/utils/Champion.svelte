@@ -26,6 +26,13 @@
                 <h3>{champ.tags.join(', ')}</h3>
             </div>
         </div>
+        <div class="flex flex-row gap-3 my-5 flex-wrap">
+            {#each champ.keywords as keyword}
+                <div class="keyword rounded-lg text-black px-2 py-1 ">
+                    {keyword}
+                </div>
+            {/each}
+        </div>
         <p>{champ.lore}</p>
     </div>
     <div class="chart">
@@ -50,7 +57,8 @@
     .desc {
         display: flex;
         flex-direction: column;
-        margin-left: 2em;
+        margin-left: 1em;
+        margin-right: 1em;
     }
 
     img {
@@ -77,6 +85,10 @@
 
     h1, h2 {
         filter: drop-shadow(0.2em 0.2em 0.1em var(--shadow-color));
+    }
+
+    p {
+        text-align: justify
     }
 
     .chart {
