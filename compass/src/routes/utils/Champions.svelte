@@ -20,8 +20,8 @@
             {/each}
         </div>
         <div class="response-content">
-            {#each value.championsData as val}
-                <Champion champ="{val}"/>
+            {#each value.championsData as val, i}
+                <Champion champ="{val}" />
             {/each}
         </div>
     {:catch error}
@@ -50,7 +50,7 @@
         margin-top: 1em;
         border-radius: 8px;
         width: 100%;
-        padding: 0.5em 0.8em;
+        /*padding: 0.5em 0.8em;*/
         height: fit-content;
         background-color: var(--prompt);
         font-size: 16pt;
