@@ -59,10 +59,10 @@ export function embedOptions(keywords: any) {
     method: 'POST',
     url: 'https://api.cohere.ai/embed',
     headers: {
-      accept: 'application/json',
+      'accept': 'application/json',
       'Cohere-Version': '2022-12-06',
       'content-type': 'application/json',
-      authorization: `Bearer ${process.env.BEARER_TOKEN}`,
+      'authorization': `Bearer ${process.env.BEARER_TOKEN}`,
     },
     data: {
       texts: keywords,

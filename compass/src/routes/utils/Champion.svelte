@@ -16,7 +16,7 @@
 </script>
 
 <div class="profile">
-    <div class="percent">Accuracy: {Math.round(champ.similarity*100)}%</div>
+    <div class="percent">Confidence: {Math.round(champ.similarity * 100)}%</div>
     <div class="desc">
         <div class="title">
             <img src="{champ.img}" alt="Champ">
@@ -40,7 +40,7 @@
         padding: 1em;
     }
 
-    .profile:nth-of-type(2) {
+    .profile:nth-of-type(even) {
         display: grid;
         grid-template-columns: 1fr 7fr 4fr;
         padding: 1em;
@@ -50,7 +50,7 @@
     .desc {
         display: flex;
         flex-direction: column;
-        margin-left: 1em;
+        margin-left: 2em;
     }
 
     img {
@@ -59,11 +59,11 @@
 
     .percent {
         position: relative;
-        font-size: 26pt;
+        font-size: 20pt;
         text-align: center;
         vertical-align: central;
         display: block;
-        top: 30%;
+        top: 40%;
     }
 
     h1 {
@@ -80,15 +80,15 @@
     }
 
     .chart {
+        position: relative;
+        top: 10%;
+        height: fit-content;
+        margin-left: 2em;
         background: radial-gradient(var(--background2), var(--prompt) 60%);
     }
 
-    .chart:nth-of-type(2) {
-        background: radial-gradient( var(--prompt), var(--background2) 60%);
-    }
-
-    .chart:nth-of-type(2) {
-        background: radial-gradient( var(--prompt), var(--background2) 60%);
+    .profile:nth-of-type(even) .chart {
+        background: radial-gradient(var(--prompt), var(--background2) 60%);
     }
 
     .title {

@@ -8,7 +8,7 @@ import {
     extractKeywordsFromResponse,
     provideOptions,
 } from "../utils/utils";
-import {similarity} from "../cosim";
+import {calculateSimilarities, similarity} from "../cosim/cosineSimilarity";
 
 export const getGameInfos = async (req: Request, res: Response) => {
     try {
@@ -26,10 +26,12 @@ export const recommendCharacter = async (req: Request, res: Response) => {
         const promptKeywords = await extractKeywordsFromPrompt(req.body.prompt);
         console.log(promptKeywords);
 
+        //TODO: make it faster
         const allCharacter = await axios.get(`${baseURL}/champion.json`);
         const charactersData = allCharacter.data.data;
         const resp = extractData(charactersData);
 
+        //TODO: make it faster
         const requests = resp.map((champion) =>
             axios.get(`${baseURL}/champion/${champion.id}.json`)
         );
@@ -50,9 +52,9 @@ export const recommendCharacter = async (req: Request, res: Response) => {
         console.log({championsKeywords})
 
 
-        championsData.forEach((data, index)  => Object.assign(data, {similarity: similarities[index]}))
+        championsData.forEach((data, index) => Object.assign(data, {similarity: similarities[index]}))
         championsData.sort((a, b) => a.similarity < b.similarity ? 1 : -1)
-        championsData = championsData.slice(0,3)
+        championsData = championsData.slice(0, 3)
 
         //res.json({promptsEmbeddings, championsEmbeddings})
         res.json({
@@ -84,7 +86,7 @@ export const extractKeywordsFromPrompt = async (prompt: any) => {
         });
 };
 
-export const extractKeywordsFromChampionData = async (champData: object[]) => {
+export const extractKeywordsFromChampionData = async (champData: any) => {
     let promises = [];
     for (let champion of champData) {
         const champDescription = champion.lore + champion.mergedSpellsDesc + '\nKeywords:';
@@ -109,14 +111,14 @@ export async function embedKeywords(keywords: any) {
 
 export async function embedChampions(championsKeywords: any) {
     let promises = [];
+
     for (let keywords of championsKeywords) {
         const options = embedOptions([keywords.join(", ")]);
         promises.push(axios.request(options))
     }
 
-    return (await Promise.all(promises)).map(extractEmbeddings).map(arr => arr.flat())
+    return (await Promise.all(promises))
+        .map(extractEmbeddings)
+        .map(arr => arr.flat())
 }
 
-export function calculateSimilarities(promptEmbedding: any, championsEmbeddings: any) {
-    return championsEmbeddings.map(champEmbedding => similarity(promptEmbedding, champEmbedding))
-}

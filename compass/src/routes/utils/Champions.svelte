@@ -1,14 +1,13 @@
 <script>
     import Champion from "./Champion.svelte";
 
-    export let response = "";
-    console.log(response)
+    export let response = {};
 </script>
 
 <div class="response">
     <hr/>
     {#await response}
-        <div class="response-content">
+        <div class="wait">
             Looking for the best match...
         </div>
     {:then value}
@@ -21,11 +20,11 @@
         </div>
         <div class="response-content">
             {#each value.championsData as val, i}
-                <Champion champ="{val}" />
+                <Champion champ="{val}"/>
             {/each}
         </div>
     {:catch error}
-        <div class="response-content">
+        <div class="wait">
             Hmm... The request didn't pass the vibe check.
         </div>
     {/await}
@@ -41,19 +40,24 @@
     .keyword {
         background-color: #42d1f5;
         font-size: 16pt;
+        filter: drop-shadow(0.5em 0.5em 0.2em var(--shadow-color));
     }
 
-    .response-content {
+    .response-content, .wait {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         margin-top: 1em;
         border-radius: 8px;
         width: 100%;
-        /*padding: 0.5em 0.8em;*/
+
         height: fit-content;
         background-color: var(--prompt);
         font-size: 16pt;
         filter: drop-shadow(0.5em 0.5em 0.2em var(--shadow-color));
+    }
+
+    .wait {
+        padding: 0.5em 0.8em;
     }
 </style>
