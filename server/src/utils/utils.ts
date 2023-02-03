@@ -44,12 +44,11 @@ export const provideOptions = (prompt: string, model?: string) => {
     },
     data: {
       model,
-      truncate: 'END',
       prompt: prompt,
-      max_tokens: 40,
+      max_tokens: 20,
       temperature: 0.3,
-      k: 0,
-      p: 0.75,
+      k: 2,
+      p: 0.85
     },
   };
 };
@@ -73,7 +72,7 @@ export function embedOptions(keywords: any) {
 export function extractKeywordsFromResponse(response: any) {
   const text: string = response.data.generations[0].text;
   // console.log({text})
-  const keywords = text.split(",").map(s => s.trim()) ?? [];
+  const keywords = cleanKeywordsTextAndSplit(text)
   return [...new Set(keywords)];
 }
 
@@ -83,4 +82,9 @@ export function extractEmbeddings(response: any) {
 
 export function extractIdAndTags(championData: any) {
   return {id: championData.id, tags: championData.tags}
+}
+
+export function cleanKeywordsTextAndSplit(text: string) {
+  text.replace(/(\n\n|Keywords:)/g, '')
+  return text.trim().split(", ").filter(value => !!value) ?? [];
 }

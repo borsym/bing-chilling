@@ -1,13 +1,22 @@
-import {embedOptions, extractEmbeddings, extractKeywordsFromResponse, provideOptions} from "../utils/utils";
+import {
+    cleanKeywordsTextAndSplit,
+    embedOptions,
+    extractEmbeddings,
+    extractKeywordsFromResponse,
+    provideOptions
+} from "../utils/utils";
 import axios from "axios";
 
 export const extractKeywordsFromChampionData = async (champData: any) => {
     let promises = [];
     for (let champion of champData) {
-        const champDescription = champion.lore + champion.mergedSpellsDesc + '\nKeywords:';
+        const spells = champion.spells.map(value => value.description).join(' ')
+        spells.replace(/<[^>]*>?/gm, '')
+        const champDescription = spells + '\nKeywords:';
         const options: any = provideOptions(champDescription, process.env.MODEL_CHAMPIONS);
+        // console.log({id: champion.id, champDescription})
         options.data.max_tokens = 20;
-        options.data.temperature = 0.4;
+        options.data.temperature = 0.55;
         promises.push(axios.request(options))
     }
 
@@ -23,7 +32,8 @@ export async function embedChampions(championsKeywords: any) {
     let promises = [];
 
     for (let keywords of championsKeywords) {
-        const options = embedOptions([keywords.join(", ")]);
+        const prompt = keywords?.join(", ") || ""
+        const options = embedOptions([prompt]);
         promises.push(axios.request(options))
     }
 
@@ -33,17 +43,10 @@ export async function embedChampions(championsKeywords: any) {
 }
 
 export const extractKeywordsFromPrompt = async (prompt: any) => {
-    const options = provideOptions(prompt, process.env.MODEL_KEYWORD);
+    const options = provideOptions(prompt + '\nKeywords:', process.env.MODEL_KEYWORD);
     return axios
         .request(options)
-        .then((response: any) => {
-            const text = response.data.generations[0].text;
-            // console.log(response.data);
-            // console.log(response.data.generations[0].text);
-            const keywords = text.split("\n\n")[1]?.split("Keywords:")[1].trim().split(", ") ?? [];
-
-            return [...new Set(keywords)];
-        })
+        .then(extractKeywordsFromResponse)
         .catch((error: any) => {
             console.error(error);
         });
