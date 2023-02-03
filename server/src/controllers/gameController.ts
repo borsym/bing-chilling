@@ -24,23 +24,18 @@ export const recommendCharacter = async (req: Request, res: Response) => {
     try {
         console.log("Prompt: ", req.body);
         const promptKeywords = await extractKeywordsFromPrompt(req.body.prompt);
-        console.log(promptKeywords);
+        // console.log(promptKeywords);
 
         const champions = (await getChampionsFromFS()).slice(0, 20);
         const championsKeywords = await extractKeywordsFromChampionData(champions);
-        console.log({promptKeywords, championsKeywords})
+        // console.log({promptKeywords, championsKeywords})
 
         const promptsEmbeddings = await embedKeywords(promptKeywords)
         const championsEmbeddings = await embedChampions(championsKeywords)
-        console.log({promptsEmbeddings, championsEmbeddings})
+        // console.log({promptsEmbeddings, championsEmbeddings})
 
         const similarities = calculateSimilarities(promptsEmbeddings, championsEmbeddings)
-        console.log(similarities)
-
-        const index = similarities.indexOf(Math.max(...similarities));
-        console.log({index, championsData: champions})
-        console.log({championsKeywords})
-
+        // console.log(similarities)
 
         champions.forEach((data, index) => Object.assign(data, {similarity: similarities[index]}))
         champions.sort((a, b) => a.similarity < b.similarity ? 1 : -1)

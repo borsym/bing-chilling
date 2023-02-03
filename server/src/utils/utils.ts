@@ -72,7 +72,7 @@ export function embedOptions(keywords: any) {
 
 export function extractKeywordsFromResponse(response: any) {
   const text: string = response.data.generations[0].text;
-  console.log({text})
+  // console.log({text})
   const keywords = text.split(",").map(s => s.trim()) ?? [];
   return [...new Set(keywords)];
 }
@@ -82,5 +82,5 @@ export function extractEmbeddings(response: any) {
 }
 
 export function extractIdAndTags(championData: any) {
-  return {}
+  return {id: championData.id, tags: championData.tags}
 }

@@ -1,6 +1,6 @@
 import axios from "axios";
 import {baseURL, imgUrl} from "../utils/constants";
-import {extractData} from "../utils/utils";
+import {extractChampionsData, extractData, extractIdAndTags} from "../utils/utils";
 import {readJSON, readFile} from "./fileService";
 
 const CACHE = new Map();
@@ -18,19 +18,18 @@ export async function getChampionsFromAPI() {
 
 export async function getChampionsFromFS(): Promise<any[]> {
     const champions = await readJSON(__dirname + '/../static/champions.json');
-
-    const requests = Object.values(champions.data).map(extractIdAndTags).map(readChampionData);
+    // console.log(champions)
+    const requests = Object.values(champions.data).map(readChampionData);
     return await Promise.all(requests);
 }
 
 async function readChampionData(champion: any): Promise<any> {
-    const cacheValue = CACHE.get(champion.id);
-
-    if (cacheValue) return Promise.resolve(cacheValue)
+    if (CACHE.has(champion.id))
+        return Promise.resolve(CACHE.get(champion.id))
 
     let championData = await readJSON(__dirname + `/../static/${champion.id}.json`)
-    championData = Object.assign(championData, {tags: champion.tags, img: `${imgUrl}/${championData.id}.png`})
-
+    championData = Object.values(championData.data)[0]
+    championData.img = `${imgUrl}/${championData.id}.png`
     CACHE.set(champion.id, championData)
 
     return championData

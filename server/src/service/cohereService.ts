@@ -38,8 +38,8 @@ export const extractKeywordsFromPrompt = async (prompt: any) => {
         .request(options)
         .then((response: any) => {
             const text = response.data.generations[0].text;
-            console.log(response.data);
-            console.log(response.data.generations[0].text);
+            // console.log(response.data);
+            // console.log(response.data.generations[0].text);
             const keywords = text.split("\n\n")[1]?.split("Keywords:")[1].trim().split(", ") ?? [];
 
             return [...new Set(keywords)];
