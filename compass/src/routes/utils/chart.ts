@@ -9,8 +9,12 @@ const options = {
     scales: {
         r: {
             angleLines: {
-                color: '#0d1059',
+                color: '#194cba',
                 lineWidth: 2
+            },
+            grid: {
+                color: 'rgb(104,106,132)',
+                drawTicks: true
             },
             ticks: {
                 color: '#69c9e0',

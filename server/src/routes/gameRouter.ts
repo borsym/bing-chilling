@@ -1,10 +1,5 @@
-import axios from "axios";
-import express, { Request, Response, Router } from "express";
-import {
-  getGameInfos,
-  recommendCharacter,
-} from "../controllers/gameController";
-import { baseURL } from "../utils/constants";
+import express, {Router} from "express";
+import {getGameInfos, recommendCharacter,} from "../controllers/gameController";
 
 const gameRouter: Router = express.Router();
 

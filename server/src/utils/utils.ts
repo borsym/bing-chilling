@@ -44,12 +44,11 @@ export const provideOptions = (prompt: string, model?: string) => {
     },
     data: {
       model,
-      truncate: 'END',
       prompt: prompt,
-      max_tokens: 40,
+      max_tokens: 20,
       temperature: 0.3,
-      k: 0,
-      p: 0.75,
+      k: 2,
+      p: 0.85
     },
   };
 };
@@ -59,10 +58,10 @@ export function embedOptions(keywords: any) {
     method: 'POST',
     url: 'https://api.cohere.ai/embed',
     headers: {
-      accept: 'application/json',
+      'accept': 'application/json',
       'Cohere-Version': '2022-12-06',
       'content-type': 'application/json',
-      authorization: `Bearer ${process.env.BEARER_TOKEN}`,
+      'authorization': `Bearer ${process.env.BEARER_TOKEN}`,
     },
     data: {
       texts: keywords,
@@ -71,12 +70,21 @@ export function embedOptions(keywords: any) {
 }
 
 export function extractKeywordsFromResponse(response: any) {
-  const text = response.data.generations[0].text;
-  console.log({text})
-  const keywords = text.split(",").map(s => s.trim()) ?? [];
+  const text: string = response.data.generations[0].text;
+  // console.log({text})
+  const keywords = cleanKeywordsTextAndSplit(text)
   return [...new Set(keywords)];
 }
 
 export function extractEmbeddings(response: any) {
   return response.data.embeddings
+}
+
+export function extractIdAndTags(championData: any) {
+  return {id: championData.id, tags: championData.tags}
+}
+
+export function cleanKeywordsTextAndSplit(text: string) {
+  text.replace(/(\n\n|Keywords:)/g, '')
+  return text.trim().split(", ").filter(value => !!value) ?? [];
 }

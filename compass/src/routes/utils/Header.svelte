@@ -2,7 +2,7 @@
 
 <header>
     <nav>
-        <img class="logo" src="src/images/logo.svg" alt="An image of a red ball."/>
+        <img class="logo" src="src/images/logo_2.svg" alt="An image of a red ball."/>
         <!--        <ul>-->
         <!--            <li aria-current={""}>-->
         <!--                <a href="/">Home</a>-->
@@ -27,6 +27,7 @@
     }
 
     nav {
+        margin: auto;
         display: flex;
         justify-content: center;
         background: none;
@@ -35,6 +36,7 @@
     .logo {
         width: 14vw;
         margin: 2em;
+        filter: drop-shadow(0.5em 0.5em 0.2em var(--shadow-color));
     }
 
     ul {

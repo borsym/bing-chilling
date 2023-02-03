@@ -14,7 +14,7 @@
             body: JSON.stringify({prompt})
         }
         console.log(options);
-        response = (await fetch("http://localhost:8800/api/v1/games/lol/recommend", options)).json()
+        response = fetch("http://localhost:8800/api/v1/games/lol/recommend", options).then(response => response.json())
         console.log(response)
     }
 </script>
