@@ -16,7 +16,7 @@
 </script>
 
 <div class="profile">
-    <div class="percent">Accuracy: 100%</div>
+    <div class="percent">Accuracy: {Math.round(champ.similarity*100)}%</div>
     <div class="desc">
         <div class="title">
             <img src="{champ.img}" alt="Champ">
@@ -81,6 +81,14 @@
 
     .chart {
         background: radial-gradient(var(--background2), var(--prompt) 60%);
+    }
+
+    .chart:nth-of-type(2) {
+        background: radial-gradient( var(--prompt), var(--background2) 60%);
+    }
+
+    .chart:nth-of-type(2) {
+        background: radial-gradient( var(--prompt), var(--background2) 60%);
     }
 
     .title {

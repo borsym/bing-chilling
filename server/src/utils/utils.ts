@@ -53,3 +53,30 @@ export const provideOptions = (prompt: string, model?: string) => {
     },
   };
 };
+
+export function embedOptions(keywords: any) {
+  return {
+    method: 'POST',
+    url: 'https://api.cohere.ai/embed',
+    headers: {
+      accept: 'application/json',
+      'Cohere-Version': '2022-12-06',
+      'content-type': 'application/json',
+      authorization: `Bearer ${process.env.BEARER_TOKEN}`,
+    },
+    data: {
+      texts: keywords,
+    },
+  };
+}
+
+export function extractKeywordsFromResponse(response: any) {
+  const text = response.data.generations[0].text;
+  console.log({text})
+  const keywords = text.split(",").map(s => s.trim()) ?? [];
+  return [...new Set(keywords)];
+}
+
+export function extractEmbeddings(response: any) {
+  return response.data.embeddings
+}
