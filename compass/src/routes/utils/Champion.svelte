@@ -87,6 +87,10 @@
         background: radial-gradient( var(--prompt), var(--background2) 60%);
     }
 
+    .chart:nth-of-type(2) {
+        background: radial-gradient( var(--prompt), var(--background2) 60%);
+    }
+
     .title {
         display: grid;
         grid-template-columns: 1fr 3fr 1fr;
