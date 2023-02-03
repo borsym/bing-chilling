@@ -12,6 +12,7 @@ const port = process.env.PORT || 8800;
 // middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.static('static'))
 
 // app.use(morgan("tiny"));
 
